@@ -60,6 +60,7 @@ INSTALLED_APPS = [
 
     # my apps
     'authentication',
+    'expenses',
 
     # 3rd party packages
     'rest_framework',
