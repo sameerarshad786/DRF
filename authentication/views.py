@@ -13,6 +13,7 @@ from .serializers import (
 )
 from .models import User
 from .utils import Util
+from renderers.renders import UserRenderer
 
 from rest_framework import generics, status, views
 from rest_framework.response import Response
@@ -21,6 +22,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 class RegisterAPIView(generics.GenericAPIView):
     serializer_class = RegisterSerialzer
+    renderer_classes = (UserRenderer,)
 
     def post(self, request):
         user = request.data
@@ -132,6 +134,9 @@ class ResetPasswordTokenCheckAPIView(generics.GenericAPIView):
             if not PasswordResetTokenGenerator().check_token(user, token):
                 return Response({"message": "Link is invalid or expired please request a new one"}, \
                     status=status.HTTP_400_BAD_REQUEST)
+
+    def get_serializer_class(self):
+        pass
 
 class SetNewPasswordAPIView(generics.GenericAPIView):
     serializer_class = SetNewPasswordSerializer
