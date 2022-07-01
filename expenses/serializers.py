@@ -6,4 +6,4 @@ from rest_framework import serializers
 class ExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Expense
-        fields = ['category', 'description', 'amount']
+        fields = ['id', 'category', 'description', 'amount']
