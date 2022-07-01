@@ -4,6 +4,6 @@ from .views import ExpenseCreateAPIView, ExpenseRetrieveAPIView
 
 
 urlpatterns = [
-    path('create/', ExpenseCreateAPIView.as_view(), name='expense'),
-    path('retrieve/<int:pk>/', ExpenseRetrieveAPIView.as_view(), name='expense-retrieve'),
+    path('expense/create/', ExpenseCreateAPIView.as_view(), name='expense'),
+    path('expense/retrieve/<int:pk>/', ExpenseRetrieveAPIView.as_view(), name='expense-retrieve'),
 ]
