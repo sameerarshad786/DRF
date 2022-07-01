@@ -3,18 +3,16 @@ from authentication.models import User
 from django.utils import timezone
 import math
 
-class Expense(models.Model):
-    CATEGORY_OPTIONS = (
-        ('ONLINE SERVICES', 'ONLINE SERVICES'),
-        ('HOME', 'HOME'),
-        ('TRAVEL', 'TRAVEL'),
-        ('FOOD', 'FOOD'),
-        ('RENT', 'RENT'),
+class Income(models.Model):
+    SOURCE_OPTIONS = (
+        ('SALLARY', 'SALLARY'),
+        ('BUSINESS', 'BUSINESS'),
+        ('SIDE-HUSTLE', 'TRAVELSIDE-HUSTLE'),
         ('OTHERS', 'OTHERS'),
     )
 
-    category = models.CharField(
-        choices=CATEGORY_OPTIONS,
+    source = models.CharField(
+        choices=SOURCE_OPTIONS,
         max_length=50,
     )
     amount = models.DecimalField(
@@ -33,8 +31,11 @@ class Expense(models.Model):
         auto_now=True,
     )
 
+    class Meta:
+        ordering = ['-created_at']
+
     def __str__(self):
-        return f"{self.owner}'s expenses"
+        return f"{self.owner}'s income"
 
     def whenpublished(self):
         now = timezone.now()

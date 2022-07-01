@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     # my apps
     'authentication',
     'expenses',
+    'income',
 
     # 3rd party packages
     'rest_framework',
