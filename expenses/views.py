@@ -9,9 +9,10 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 class ExpenseCreateAPIView(ListCreateAPIView):
     serializer_class = ExpenseSerializer
+    permission_classes = (permissions.IsAuthenticated,)
     queryset = Expense.objects.all()
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ('id', 'owner', 'amount', 'category',)
+    filterset_fields = ('id', 'owner', 'amount', 'description', 'category',)
 
     def perform_create(self, serializer):
         return serializer.save(owner=self.request.user)

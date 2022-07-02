@@ -6,4 +6,4 @@ from rest_framework import serializers
 class IncomeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Income
-        fields = ['id', 'source', 'description', 'amount']
+        fields = ['__str__', 'source', 'description', 'amount']
