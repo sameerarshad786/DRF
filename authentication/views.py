@@ -73,6 +73,7 @@ class VerifyEmailAPIView(views.APIView):
 
 class LoginAPIView(generics.GenericAPIView):
     serializer_class = LoginSerialzer
+    renderer_classes = (UserRenderer,)
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
@@ -91,6 +92,7 @@ class LogoutAPIView(generics.GenericAPIView):
 
 class ResetPasswordAPIView(generics.GenericAPIView):
     serializer_class = ResetPasswordSerializer
+    renderer_classes = (UserRenderer,)
 
     def post(self, request):
 

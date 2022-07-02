@@ -9,13 +9,13 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 class IncomeCreateAPIView(ListCreateAPIView):
     serializer_class = IncomeSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    # permission_classes = (permissions.IsAuthenticated,)
     queryset = Income.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ('id', 'owner', 'amount', 'source',)
 
-    def perform_create(self, serializer):
-        return serializer.save(owner=self.request.user)
+    # def perform_create(self, serializer):
+    #     return serializer.save(owner=self.request.user)
 
     def get_queryset(self):
         return self.queryset.filter(owner=self.request.user)
