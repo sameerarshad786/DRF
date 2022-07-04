@@ -110,6 +110,9 @@ class ResetPasswordSerializer(serializers.Serializer):
     email = serializers.EmailField(
         max_length=100,
     )
+    redirect_url = serializers.CharField(
+        max_length=500, required=False,
+    )
 
     class Meta:
         fields = ["email"]
